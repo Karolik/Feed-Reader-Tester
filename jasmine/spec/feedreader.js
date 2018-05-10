@@ -100,22 +100,19 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-        //var self = this;
-        //self.initialComplete = true;
-        var container = $('.feed');
-            //entry = $('.entry');
-           // entries = result.feed.entries;
+        //var container = $('.feed');
+        // var entry = result.feed.entries;
+        var entryTemplate = Handlebars.compile($('.tpl-entry').html());
 
         beforeEach(function(done){
-            loadFeed(function(id, cb){
+            loadFeed(0, function(){
                 done();
             });
         });
 
         it('The .feed container has at least a single .entry element', function(done){
-            expect(loadFeed).toHaveBeenCalled();
-            //expect(loadFeed).toHaveBeenCalledTimes(1);
-            //expect(container).toContain(entry);
+            //expect(container).toContain();
+            expect(entryTemplate.length).not.toBe(0);
             done();
         });
     });
@@ -125,5 +122,18 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+        //var container = $('.feed');
+        //var entry = $('.entry');
+
+        beforeEach(function(done){
+            loadFeed(0, function(){
+                done();
+            });
+        });
+
+        it('The content changes', function(done){
+            expect().not.toBe();
+            done();
+        });
     });
 }());
