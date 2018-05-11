@@ -59,37 +59,25 @@ $(function() {
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-        /* .menu-hidden .slide-menu {
-            transform: translate3d(-12em, 0, 0);
-            transition: transform 0.2s;
-            translate3d(tx, ty, tz)
-        } */
 
         it('is hidden by default', function(){
-            var menuClass = $('body').attr('class');
-            expect(menuClass).toContain('menu-hidden');
+            //var menuClass = $('body').attr('class');
+            //expect(menuClass).toContain('menu-hidden');
+            expect($('body')).toHaveClass('menu-hidden');
         });
-
+        var menuIcon = $('.menu-icon-link');
+        var menuClass = $('body').attr('class');
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
         it('changes visibility', function(){
-            var menuIcon = $('.menu-icon-link');
-            var menuClass = $('body').attr('class');
-
-            function clicking(){
-                menuIcon.on('click', function() {
-                $('body').toggleClass('menu-hidden');
-                });
-            }
-
-            clicking();
-            expect(menuClass).not.toContain('menu-hidden');
-
-            clicking();
-            expect(menuClass).toContain('menu-hidden');
+            menuIcon.click();
+            expect($('body').attr('class')).not.toContain('menu-hidden');
+            
+            menuIcon.click();
+            expect($('body').attr('class')).toContain('menu-hidden');
         });
     });
     /* TODO: Write a new test suite named "Initial Entries" */
@@ -100,7 +88,7 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-        //var container = $('.feed');
+        var container = $('.feed');
         // var entry = result.feed.entries;
         var entryTemplate = Handlebars.compile($('.tpl-entry').html());
 
@@ -124,14 +112,18 @@ $(function() {
          */
         //var container = $('.feed');
         //var entry = $('.entry');
+        //var entryOne;
+        //var entryTwo;
 
         beforeEach(function(done){
             loadFeed(0, function(){
+                //entryOne = container.html;
                 done();
             });
         });
 
         it('The content changes', function(done){
+            //entryTwo = container.html;
             expect().not.toBe();
             done();
         });
