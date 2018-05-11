@@ -89,8 +89,7 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
         var container = $('.feed');
-        // var entry = result.feed.entries;
-        var entryTemplate = Handlebars.compile($('.tpl-entry').html());
+        //var entryTemplate = Handlebars.compile($('.tpl-entry').html());
 
         beforeEach(function(done){
             loadFeed(0, function(){
@@ -100,7 +99,7 @@ $(function() {
 
         it('The .feed container has at least a single .entry element', function(done){
             //expect(container).toContain();
-            expect(entryTemplate.length).not.toBe(0);
+            expect(container.length).not.toBe(0);
             done();
         });
     });
@@ -112,19 +111,19 @@ $(function() {
          */
         //var container = $('.feed');
         //var entry = $('.entry');
-        //var entryOne;
-        //var entryTwo;
+        var contentBefore;
+        var contentAfter;
 
         beforeEach(function(done){
             loadFeed(0, function(){
-                //entryOne = container.html;
+                contentBefore = $('.entry');
                 done();
             });
         });
 
         it('The content changes', function(done){
-            //entryTwo = container.html;
-            expect().not.toBe();
+            contentAfter = $('.entry');
+            expect(contentBefore).not.toBe(contentAfter);
             done();
         });
     });
