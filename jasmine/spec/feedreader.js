@@ -121,12 +121,13 @@ $(function() {
                 feed1 = $('.entry');
                 done();
             });
+            loadFeed(1, function(){
+                feed2 = $('.entry');
+                done();
+            });
         });
 
         it('The content changes', function(done){
-            loadFeed(1, function(){
-                feed2 = $('.entry');
-            });
             expect(feed1).not.toBe(feed2);
             done();
         });
