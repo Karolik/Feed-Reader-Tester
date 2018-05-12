@@ -127,9 +127,8 @@ $(function() {
             });
         });
 
-        it('The content changes', function(done){
+        it('The content changes', function(){
             expect(feed1).not.toBe(feed2);
-            done();
         });
     });
 }());
