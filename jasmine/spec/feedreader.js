@@ -113,21 +113,21 @@ $(function() {
          */
         //var container = $('.feed');
         //var entry = $('.entry');
-        var contentBefore;
-        var contentAfter;
+        var feed1;
+        var feed2;
 
         beforeEach(function(done){
             loadFeed(0, function(){
-                contentBefore = $('.entry');
+                feed1 = $('.entry');
                 done();
             });
         });
 
         it('The content changes', function(done){
             loadFeed(1, function(){
-                contentAfter = $('.entry');
+                feed2 = $('.entry');
             });
-            expect(contentBefore).not.toBe(contentAfter);
+            expect(feed1).not.toBe(feed2);
             done();
         });
     });
