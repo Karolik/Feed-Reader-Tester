@@ -75,10 +75,12 @@ $(function() {
           */
         it('changes visibility', function(){
             menuIcon.click();
-            expect($('body').attr('class')).not.toContain('menu-hidden');
+            //expect($('body').attr('class')).not.toContain('menu-hidden');
+            expect($('body')).not.toHaveClass('menu-hidden');
             
             menuIcon.click();
-            expect($('body').attr('class')).toContain('menu-hidden');
+            //expect($('body').attr('class')).toContain('menu-hidden');
+            expect($('body')).toHaveClass('menu-hidden');
         });
     });
     /* TODO: Write a new test suite named "Initial Entries" */
@@ -90,7 +92,7 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
         var container = $('.feed');
-        //var entryTemplate = Handlebars.compile($('.tpl-entry').html());
+        var entryTemplate = Handlebars.compile($('.tpl-entry').html());
 
         beforeEach(function(done){
             loadFeed(0, function(){
@@ -98,10 +100,9 @@ $(function() {
             });
         });
 
-        it('The .feed container has at least a single .entry element', function(done){
-            //expect(container).toContain();
-            expect(container.length).not.toBe(0);
-            done();
+        it('The .feed container has at least a single .entry element', function(){
+            expect(container).toContain(entryTemplate);
+            //expect(container.length).not.toBe(0);
         });
     });
     /* TODO: Write a new test suite named "New Feed Selection" */
@@ -123,7 +124,9 @@ $(function() {
         });
 
         it('The content changes', function(done){
-            contentAfter = $('.entry');
+            loadFeed(1, function(){
+                contentAfter = $('.entry');
+            });
             expect(contentBefore).not.toBe(contentAfter);
             done();
         });
