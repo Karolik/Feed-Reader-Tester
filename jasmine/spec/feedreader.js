@@ -33,8 +33,8 @@ $(function() {
          */
         it('have a URL defined', function() {
             for(let i = 0; i < allFeeds.length; i++){
-            expect(allFeeds[i].url).toBeDefined();
-            expect(allFeeds[i].url).not.toBe('');
+            expect(allFeeds[i].url).toBeDefined();  // The URL is defined
+            expect(allFeeds[i].url).not.toBe('');   // The URL is not empty
             }
         });
         
@@ -45,8 +45,8 @@ $(function() {
          */
         it('have a name defined', function() {
             for(var i = 0; i < allFeeds.length; i++){
-            expect(allFeeds[i].name).toBeDefined();
-            expect(allFeeds[i].name).not.toBe('');
+            expect(allFeeds[i].name).toBeDefined(); // The name is defined
+            expect(allFeeds[i].name).not.toBe('');  // The name is not empty
             }
         });
     });
@@ -60,12 +60,10 @@ $(function() {
          * hiding/showing of the menu element.
          */
         var menuIcon = $('.menu-icon-link');
-        var menuClass = $('body').attr('class');
         
         it('is hidden by default', function(){
-            //var menuClass = $('body').attr('class');
-            //expect(menuClass).toContain('menu-hidden');
-            expect($('body')).toHaveClass('menu-hidden');
+            expect($('body')).toHaveClass('menu-hidden'); // The menu element is hidden by default
+            //expect($('body').attr('class')).toContain('menu-hidden');
         });
        
          /* TODO: Write a test that ensures the menu changes
@@ -75,12 +73,10 @@ $(function() {
           */
         it('changes visibility', function(){
             menuIcon.click();
-            //expect($('body').attr('class')).not.toContain('menu-hidden');
-            expect($('body')).not.toHaveClass('menu-hidden');
+            expect($('body')).not.toHaveClass('menu-hidden'); // The menu displays when clicked
             
             menuIcon.click();
-            //expect($('body').attr('class')).toContain('menu-hidden');
-            expect($('body')).toHaveClass('menu-hidden');
+            expect($('body')).toHaveClass('menu-hidden'); // The menu hides when clicked again
         });
     });
     /* TODO: Write a new test suite named "Initial Entries" */
@@ -102,7 +98,6 @@ $(function() {
 
         it('The .feed container has at least a single .entry element', function(){
             expect(container).toContain(entryTemplate);
-            //expect(container.length).not.toBe(0);
         });
     });
     /* TODO: Write a new test suite named "New Feed Selection" */
@@ -111,8 +106,6 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-        //var container = $('.feed');
-        //var entry = $('.entry');
         var feed1;
         var feed2;
 
@@ -128,7 +121,7 @@ $(function() {
         });
 
         it('The content changes', function(){
-            expect(feed1).not.toBe(feed2);
+            expect(feed1).not.toBe(feed2); // When a new feed is loaded the content changes
         });
     });
 }());
